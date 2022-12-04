@@ -223,24 +223,15 @@ https://www.youtube.com/watch?v=prTo8yogprE&t=519s
 - 버튼 클릭시 이벤트가 발생해서 대상의 색을 지정해주는 역할을 합니다.
 
 ```c
-       h = new Handler() {
-            public void handleMessage(android.os.Message msg) {
-                switch (msg.what) {
-                    case RECIEVE_MESSAGE:
-                        byte[] readBuf = (byte[]) msg.obj;
-                        String strIncom = new String(readBuf, 0, msg.arg1);
-                        sb.append(strIncom);
-                        int endOfLineIndex = sb.indexOf("\r\n");
-                        if (endOfLineIndex > 0) {
-                            String sbprint = sb.substring(0, endOfLineIndex);
-                            sb.delete(0, sb.length());
-                            txtArduino.setText("Data from Arduino: " + sbprint);
-                            if(flag%4==3){
-                                rlayout.setBackgroundColor(Color.rgb(255, 255, 255));
-                            }
-                            else if(flag%4==1){ //R
-                                rlayout.setBackgroundColor(Color.rgb(255, 0, 0));
-                            }
+      public void write(String message) {
+            Log.d(TAG, "...Data to send: " + message + "...");
+            byte[] msgBuffer = message.getBytes();
+            try {
+                mmOutStream.write(msgBuffer);
+            } catch (IOException e) {
+                Log.d(TAG, "...Error data send: " + e.getMessage() + "...");
+            }
+        }
 ```
 
 
