@@ -1,4 +1,4 @@
-# 토닥토닥 프로젝트 (Android Ver.)
+# 🏆졸업작품 우수 포스터상 - 토닥토닥 프로젝트 (모바일)
 
 <img src="https://img.shields.io/badge/platform-firebase-blue">  <img src="https://img.shields.io/badge/platform-android-green"> 
 
