@@ -57,7 +57,6 @@ public class IoTFragment extends Fragment {
     private BluetoothAdapter btAdapter = null;
     private BluetoothSocket btSocket = null;
     private StringBuilder sb = new StringBuilder();
-    private static int flag = 0;
 
     private ConnectedThread mConnectedThread;
 
@@ -137,29 +136,19 @@ public class IoTFragment extends Fragment {
                             String sbprint = sb.substring(0, endOfLineIndex);
                             sb.delete(0, sb.length());
                             txtArduino.setText("Data from Arduino: " + sbprint);
-                            if(flag%4==3){
-                                rlayout.setBackgroundColor(Color.rgb(255, 255, 255));
+                            if(sbprint.equals("purple")){
+                                rlayout.setBackgroundColor(Color.rgb(230, 230, 230));
                             }
-                            else if(flag%4==1){ //R
+                            else if(sbprint.equals("red")){ //R
                                 rlayout.setBackgroundColor(Color.rgb(255, 0, 0));
                             }
-                            else if(flag%4==2){ //G
+                            else if(sbprint.equals("green")){ //G
                                 rlayout.setBackgroundColor(Color.rgb(0, 255, 0));
                             }
-                            else if(flag%4==0){ //B
+                            else if(sbprint.equals("blue")){ //B
                                 rlayout.setBackgroundColor(Color.rgb(0, 0, 255));
                             }
-                            else if(flag%4==0){ //Dark
-                                rlayout.setBackgroundColor(Color.rgb(0, 0, 255));
-                            }
-                            else if(flag%4==0){ //Bright
-                                rlayout.setBackgroundColor(Color.rgb(0, 0, 255));
-                            }
-                            flag++;
-                            btnLed1.setEnabled(true);
-                            btnLed2.setEnabled(true);
-                            btnLed3.setEnabled(true);
-                            btnLed4.setEnabled(true);
+                            
 
                         }
                         break;
